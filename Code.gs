@@ -11,7 +11,7 @@
  */
 function GetBOAdress(user, pw, nid, type, feld) {
   if (!user || !pw || !nid) {
-    throw new Error("User, PW und NID sind Pflichtparameter.");
+    return "";
   }
 
   var url = "https://heinrich-koehler.de/en/api/client-address?filter[client]=" + encodeURIComponent(nid);
@@ -26,24 +26,24 @@ function GetBOAdress(user, pw, nid, type, feld) {
       muteHttpExceptions: true
     });
   } catch (e) {
-    throw new Error("Netzwerkfehler: " + e.message);
+    return "";
   }
 
   var code = response.getResponseCode();
   if (code !== 200) {
-    throw new Error("API-Fehler: HTTP " + code);
+    return "";
   }
 
   var json;
   try {
     json = JSON.parse(response.getContentText());
   } catch (e) {
-    throw new Error("Ungültige API-Antwort (kein JSON).");
+    return "";
   }
   var addresses = json.data;
 
   if (!addresses || addresses.length === 0) {
-    throw new Error("Keine Adressen für NID " + nid + " gefunden.");
+    return "";
   }
 
   // Defaultadresse finden
@@ -85,7 +85,7 @@ function GetBOAdress(user, pw, nid, type, feld) {
         return fallbackValue !== null && fallbackValue !== "" ? String(fallbackValue) : "";
       }
     }
-    throw new Error("Unbekanntes Feld: " + feld);
+    return "";
   }
 
   // Gerenderte Adresse als reinen Text zurückgeben
