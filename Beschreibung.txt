@@ -1,0 +1,33 @@
+Ich benötige eine benutzerdefinierte Funktion für Google Sheets, die eine API-Call durchführt und den Response entsprechend einiger Parameter aus dem Funktionscall aufbereitet und als Ergebnis zurückgibt.
+
+Der Aufruf der Funktion soll folgendermaßen aussehen.
+
+GetBOAdress(User,PW,NID) soll die Defaultadresse gerendert zurückgeben.
+GetBOAdress(User,PW,NID,TYPE) soll eine Adresse eines bestimmten Typs gerendert zurückgeben. Ist dieser Typ bei der Adresse nicht vorhanden, soll die Standardadresse zurückgeben werden.
+GetBOAdress(User,PW,NID,,FELD) soll nur das FELD der Defaultadresse zurückgeben werden.
+GetBOAdress(User,PW,NID,TYPE,FELD) soll nur das FELD der Adresse des festgelegten Typs zurückgeben werden. Ist dieser nicht vorhanden, das Feld aus der Defaultadresse.
+
+Folgende Felder sind vorhanden
+
+country
+administrative_area
+sub_administrative_area
+locality
+dependent_locality
+postal_code
+thoroughfare
+premise
+sub_premise
+organisation_name
+name_line
+first_name
+last_name
+care_of
+name_prefix
+letter_salutation
+
+In der Datei APICALL.txt steht die URL eines API-Calls mit dem Platzhalter ###NID### der durch einen Parameter ersetzt werden muss. User und PW dienen zur generierung des notwendigen Tokens für die BasicAuth.
+
+Das Response für ein Beispiel findet sich in Response.json. Die gerenderte Version befindet sich unter "rendered:" und sieht so aus. 
+"rendered": "\u003Cdiv class=\u0022field field-name-field-address field-type-addressfield field-label-hidden\u0022\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E\u003Cdiv\u003EHerr\u003C\/div\u003E\u003Cdiv\u003EIngo Gerhold\u003C\/div\u003E\u003Cdiv class=\u0022street-block\u0022\u003E\u003Cdiv class=\u0022thoroughfare\u0022\u003EHans-Holbein Str. 53\u003C\/div\u003E\u003C\/div\u003E\n\u003Cdiv class=\u0022addressfield-container-inline locality-block country-DE\u0022\u003E\u003Cspan class=\u0022postal-code\u0022\u003E31515\u003C\/span\u003E \u003Cspan class=\u0022locality\u0022\u003EWunstorf\u003C\/span\u003E\u003C\/div\u003E\n\u003Cspan class=\u0022country\u0022\u003EGermany\u003C\/span\u003E\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E"
+Diese muss in reinen Text umgewandelt werden und von etwaigen HTML-Entities und CSS-Klassen bereinigt werden.

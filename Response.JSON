@@ -1,0 +1,99 @@
+{
+    "data": [
+        {
+            "id": "887475",
+            "label": "Default address - Website - DE - 31515",
+            "published": "1",
+            "created": 1581455615000,
+            "updated": 1741692780000,
+            "author": {
+                "id": null,
+                "label": null,
+                "mail": null,
+                "value": null,
+                "uuid": null
+            },
+            "vid": "5991162",
+            "address": {
+                "country": "DE",
+                "administrative_area": "DE-NI",
+                "sub_administrative_area": null,
+                "locality": "Wunstorf",
+                "dependent_locality": null,
+                "postal_code": "31515",
+                "thoroughfare": "Hans-Holbein Str. 53",
+                "premise": "",
+                "sub_premise": null,
+                "organisation_name": "",
+                "name_line": "",
+                "first_name": "",
+                "last_name": "",
+                "data": "[]",
+                "care_of": null,
+                "name_prefix": null,
+                "letter_salutation": null
+            },
+            "address_types": [
+                "website"
+            ],
+            "client": 887474,
+            "default_address": true,
+            "validated": false,
+            "extra_data": {
+                "keys": [],
+                "data": []
+            },
+            "rendered": "\u003Cdiv class=\u0022field field-name-field-address field-type-addressfield field-label-hidden\u0022\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E\u003Cdiv\u003EHerr\u003C\/div\u003E\u003Cdiv\u003EIngo Gerhold\u003C\/div\u003E\u003Cdiv class=\u0022street-block\u0022\u003E\u003Cdiv class=\u0022thoroughfare\u0022\u003EHans-Holbein Str. 53\u003C\/div\u003E\u003C\/div\u003E\n\u003Cdiv class=\u0022addressfield-container-inline locality-block country-DE\u0022\u003E\u003Cspan class=\u0022postal-code\u0022\u003E31515\u003C\/span\u003E \u003Cspan class=\u0022locality\u0022\u003EWunstorf\u003C\/span\u003E\u003C\/div\u003E\n\u003Cspan class=\u0022country\u0022\u003EGermany\u003C\/span\u003E\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E"
+        },
+        {
+            "id": "2063060",
+            "label": "Shipping for Lots\/Parcel - DE - 65189",
+            "published": "1",
+            "created": 1771853705000,
+            "updated": 1771853710000,
+            "author": {
+                "id": "7264",
+                "label": "Ingo Gerhold",
+                "mail": "ingo@circuitauction.com",
+                "value": "7264",
+                "uuid": "backoffice-hk-live-5c8f6ef676b979-15420883"
+            },
+            "vid": "6284879",
+            "address": {
+                "country": "DE",
+                "administrative_area": null,
+                "sub_administrative_area": null,
+                "locality": "Wiesbaden",
+                "dependent_locality": null,
+                "postal_code": "65189",
+                "thoroughfare": "Hasengartenstra\u00dfe 25",
+                "premise": null,
+                "sub_premise": null,
+                "organisation_name": null,
+                "name_line": null,
+                "first_name": null,
+                "last_name": null,
+                "data": "{\u0022care_of\u0022:\u0022Heinrich K\\u00f6hler Auktionshaus GmbH \\u0026 Co. KG\u0022}",
+                "care_of": "Heinrich K\u00f6hler Auktionshaus GmbH \u0026 Co. KG",
+                "name_prefix": null,
+                "letter_salutation": null
+            },
+            "address_types": [
+                "shipping_for_lots"
+            ],
+            "client": 887474,
+            "default_address": false,
+            "validated": false,
+            "extra_data": {
+                "keys": [],
+                "data": []
+            },
+            "rendered": "\u003Cdiv class=\u0022field field-name-field-address field-type-addressfield field-label-hidden\u0022\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E\u003Cdiv\u003EHerr\u003C\/div\u003E\u003Cdiv\u003EIngo Gerhold\u003C\/div\u003E\u003Cdiv\u003Ec\/o Heinrich K\u00f6hler Auktionshaus GmbH \u0026amp; Co. KG\u003C\/div\u003E\u003Cdiv class=\u0022street-block\u0022\u003E\u003Cdiv class=\u0022thoroughfare\u0022\u003EHasengartenstra\u00dfe 25\u003C\/div\u003E\u003C\/div\u003E\n\u003Cdiv class=\u0022addressfield-container-inline locality-block country-DE\u0022\u003E\u003Cspan class=\u0022postal-code\u0022\u003E65189\u003C\/span\u003E \u003Cspan class=\u0022locality\u0022\u003EWiesbaden\u003C\/span\u003E\u003C\/div\u003E\n\u003Cspan class=\u0022country\u0022\u003EGermany\u003C\/span\u003E\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E"
+        }
+    ],
+    "count": 2,
+    "self": {
+        "title": "Self",
+        "href": "https:\/\/heinrich-koehler.de\/en\/api\/v1.0\/client-address"
+    }
+}
