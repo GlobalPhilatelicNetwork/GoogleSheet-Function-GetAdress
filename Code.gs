@@ -189,5 +189,8 @@ function decodeHtmlEntities_(text) {
     return String.fromCharCode(parseInt(hex, 16));
   });
 
+  // Steuerzeichen filtern (außer Newline/Tab)
+  text = text.replace(/[\x00-\x08\x0B-\x1F\x7F]/g, "");
+
   return text;
 }
