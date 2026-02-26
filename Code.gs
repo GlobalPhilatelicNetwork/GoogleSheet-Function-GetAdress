@@ -19,17 +19,27 @@ function GetBOAdress(user, pw, nid, type, feld) {
     "Authorization": "Basic " + Utilities.base64Encode(user + ":" + pw)
   };
 
-  var response = UrlFetchApp.fetch(url, {
-    headers: headers,
-    muteHttpExceptions: true
-  });
+  var response;
+  try {
+    response = UrlFetchApp.fetch(url, {
+      headers: headers,
+      muteHttpExceptions: true
+    });
+  } catch (e) {
+    throw new Error("Netzwerkfehler: " + e.message);
+  }
 
   var code = response.getResponseCode();
   if (code !== 200) {
     throw new Error("API-Fehler: HTTP " + code);
   }
 
-  var json = JSON.parse(response.getContentText());
+  var json;
+  try {
+    json = JSON.parse(response.getContentText());
+  } catch (e) {
+    throw new Error("Ungültige API-Antwort (kein JSON).");
+  }
   var addresses = json.data;
 
   if (!addresses || addresses.length === 0) {
@@ -53,20 +63,10 @@ function GetBOAdress(user, pw, nid, type, feld) {
   var targetAddress = defaultAddress;
 
   if (type && type !== "") {
-    var typeLower = type.toLowerCase().trim();
-    for (var j = 0; j < addresses.length; j++) {
-      var types = addresses[j].address_types;
-      if (types) {
-        for (var k = 0; k < types.length; k++) {
-          if (types[k].toLowerCase() === typeLower) {
-            targetAddress = addresses[j];
-            break;
-          }
-        }
-      }
-      if (targetAddress !== defaultAddress) break;
+    var found = findAddressByType_(addresses, type);
+    if (found) {
+      targetAddress = found;
     }
-    // Wenn Typ nicht gefunden: Fallback auf Default (targetAddress bleibt defaultAddress)
   }
 
   // Einzelnes Feld zurückgeben
@@ -91,6 +91,29 @@ function GetBOAdress(user, pw, nid, type, feld) {
   // Gerenderte Adresse als reinen Text zurückgeben
   var rendered = targetAddress.rendered || "";
   return htmlToPlainText_(rendered);
+}
+
+/**
+ * Sucht eine Adresse mit dem angegebenen Typ.
+ *
+ * @param {Array} addresses - Array der Adressobjekte
+ * @param {string} type - Gesuchter Adresstyp
+ * @return {Object|null} Gefundene Adresse oder null
+ * @private
+ */
+function findAddressByType_(addresses, type) {
+  var typeLower = type.toLowerCase().trim();
+  for (var i = 0; i < addresses.length; i++) {
+    var types = addresses[i].address_types;
+    if (types) {
+      for (var j = 0; j < types.length; j++) {
+        if (types[j].toLowerCase() === typeLower) {
+          return addresses[i];
+        }
+      }
+    }
+  }
+  return null;
 }
 
 /**
